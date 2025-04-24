@@ -1,20 +1,16 @@
-// Capturar o elemento canvas
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-
-// Definir tamanho do canvas
-canvas.width = 800;
-canvas.height = 600;
-
-// Exemplo: desenhar um retângulo
-ctx.fillStyle = "red";
-ctx.fillRect(100, 100, 200, 150);
-
-
 
 // Capturar o elemento canvas e configurar o contexto de desenho
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+
+// Capturar as teclas pressionadas
+const keys = {
+    ArrowUp: false,
+    ArrowDown: false,
+    ArrowLeft: false,
+    ArrowRight: false
+};
+
 
 // Definir tamanho do canvas
 canvas.width = 800;
@@ -44,16 +40,6 @@ function updateGame() {
 
 // Iniciar o loop do jogo
 updateGame();
-
-
-
-// Capturar as teclas pressionadas
-const keys = {
-    ArrowUp: false,
-    ArrowDown: false,
-    ArrowLeft: false,
-    ArrowRight: false
-};
 
 // Detectar quando uma tecla é pressionada
 window.addEventListener("keydown", (event) => {
