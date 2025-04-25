@@ -16,27 +16,36 @@ const keys = {
 canvas.width = 800;
 canvas.height = 600;
 
-// Criar o personagem (posição inicial)
+// Carregar imagem do personagem
+const playerImg = new Image();
+playerImg.src = "imagens/personagem.png"; // Certifique-se que está no caminho certo
+
+
+// Criar objeto do personagem
 const player = {
-    x: canvas.width / 2 - 15, // Posição inicial (centralizada)
+    x: canvas.width / 2 - 15, // Centralizado na tela
     y: canvas.height / 2 - 15,
     width: 30,
     height: 30,
-    speed: 5 // Velocidade de movimento
+    speed: 5
 };
 
-// Função para desenhar o personagem
+
+
+// Função para desenhar o personagem com imagem
 function drawPlayer() {
-    ctx.fillStyle = "blue"; // Cor do personagem
-    ctx.fillRect(player.x, player.y, player.width, player.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa a tela
+    ctx.drawImage(playerImg, player.x, player.y, player.width, player.height); // Desenha o sprite
 }
 
-// Função para atualizar o jogo
+
+// Atualizar o jogo com a movimentação e a imagem
 function updateGame() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpar a tela
-    drawPlayer(); // Redesenhar personagem
-    requestAnimationFrame(updateGame); // Continuar atualização
+    movePlayer(); // Atualiza posição
+    drawPlayer(); // Desenha o sprite do personagem
+    requestAnimationFrame(updateGame); // Mantém o loop do jogo
 }
+
 
 // Iniciar o loop do jogo
 updateGame();
